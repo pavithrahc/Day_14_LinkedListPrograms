@@ -12,7 +12,7 @@ public class LinkedList<K> {
 
 	/**
 	 * @param args
-	 * UC1-To create a simple linked list
+	 * 
 	 */
 	
 	public Node head;// null
@@ -28,16 +28,17 @@ public class LinkedList<K> {
 		}
 	}
 
-	public void addFirst(Object data) {
+	// add last 
+	public void addLast(Object data) {
 		Node newNode = new Node(data);
-
 		if (head == null)
 			head = newNode;
 		else {
 			Node temp = head;
-			head = newNode;
-			head.next = temp;
-
+			while (temp.next != null) {
+				temp = temp.next;
+			}
+			temp.next = newNode;
 		}
 	}
 
@@ -59,9 +60,9 @@ public class LinkedList<K> {
 		System.out.println("Welcome to LinkedList programs");
 		LinkedList sc = new LinkedList();
 
-		sc.addFirst(70);
-		sc.addFirst(30);
-		sc.addFirst(56);
+		sc.addLast(56);
+		sc.addLast(30);
+		sc.addLast(70);
 		sc.display();
 		
 	}
