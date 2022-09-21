@@ -41,16 +41,17 @@ public class LinkedList<K> {
 		}
 	}
 
-	public void deleteFirst() {
+	public void deleteLast() {
 		if (head == null)
 			System.out.println("No elements to delete...");
 		else if (head.next == null)
 			head = null;
 		else {
-
-			Node temp = head.next;
-			head = temp;
-
+			Node temp = head;
+			while (temp.next.next != null) {
+				temp = temp.next;
+			}
+			temp.next = null;
 		}
 	}
 
@@ -76,7 +77,7 @@ public class LinkedList<K> {
 		sc.addFirst(30);
 		sc.addFirst(70);
 		sc.display();
-		sc.deleteFirst();
+		sc.deleteLast();
 		sc.display();
 		
 	}
