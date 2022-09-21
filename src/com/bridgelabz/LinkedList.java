@@ -41,19 +41,6 @@ public class LinkedList<K> {
 		}
 	}
 
-	public void addLast(Object data) {
-		Node newNode = new Node(data);
-		if (head == null)
-			head = newNode;
-		else {
-			Node temp = head;
-			while (temp.next != null) {
-				temp = temp.next;
-			}
-			temp.next = newNode;
-		}
-	}
-
 	public void deleteFirst() {
 		if (head == null)
 			System.out.println("No elements to delete...");
@@ -66,86 +53,6 @@ public class LinkedList<K> {
 
 		}
 	}
-
-	public void search(Object searchData) {
-		if (head.data == searchData)
-			System.out.println(searchData + " is Found");
-		else {
-			Node temp = head;
-
-			boolean isFound = false;
-
-			while (temp != null) {
-				if (temp.data == searchData) {
-					isFound = true;
-					break;
-				}
-
-				temp = temp.next;
-			}
-
-			if (isFound == true)
-				System.out.println(searchData + " is Found");
-			else
-				System.out.println(searchData + " is not found..");
-		}
-	}
-
-	public int size() {
-		int count = 0;
-
-		Node temp = head;
-
-		while (temp != null) {
-			count++;
-			temp = temp.next;
-		}
-
-		return count;
-
-	}
-
-	public void insertIndex(int userIndex, Object data) {
-
-		// User trying to insert @ first position
-		if (userIndex == 0)
-			addFirst(data);
-
-		// User trying to insert @ last position
-		else if (userIndex == size())
-			addLast(data);
-
-		// User trying to insert @ invalid position
-		else if (userIndex < 0 || userIndex >= size())
-			System.out.println("Invalid index");
-
-		// User trying to insert @ specific index
-		else {
-			// Creating New Node
-			Node newNode = new Node(data);
-
-			// To track traversing
-			int index = 0;
-
-			// Pointers to track left & right side elements
-			Node left = head;
-			Node right = left.next;
-
-			// Traverse or Move till last element before user entered index
-			while (index < userIndex - 1) {
-				left = left.next;
-				right = right.next;
-				index++;
-			}
-			// Connecting new Node with right side elements
-			newNode.next = right;
-			
-			// Connecting left side elements with new Node
-			left.next = newNode;
-		}
-	}
-
-
 
 	// Display all Node with Value
 	public void display() {
@@ -165,9 +72,11 @@ public class LinkedList<K> {
 		System.out.println("Welcome to LinkedList programs");
 		LinkedList sc = new LinkedList();
 
-		sc.addLast(56);
-		sc.addLast(30);
-		sc.addLast(70);
+		sc.addFirst(56);
+		sc.addFirst(30);
+		sc.addFirst(70);
+		sc.display();
+		sc.deleteFirst();
 		sc.display();
 		
 	}
