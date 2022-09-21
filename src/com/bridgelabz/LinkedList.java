@@ -41,17 +41,27 @@ public class LinkedList<K> {
 		}
 	}
 
-	public void deleteLast() {
-		if (head == null)
-			System.out.println("No elements to delete...");
-		else if (head.next == null)
-			head = null;
+	public void search(Object searchData) {
+		if (head.data == searchData)
+			System.out.println(searchData + " is Found");
 		else {
 			Node temp = head;
-			while (temp.next.next != null) {
+
+			boolean isFound = false;
+
+			while (temp != null) {
+				if (temp.data == searchData) {
+					isFound = true;
+					break;
+				}
+
 				temp = temp.next;
 			}
-			temp.next = null;
+
+			if (isFound == true)
+				System.out.println(searchData + " is Found");
+			else
+				System.out.println(searchData + " is not found..");
 		}
 	}
 
@@ -77,7 +87,7 @@ public class LinkedList<K> {
 		sc.addFirst(30);
 		sc.addFirst(70);
 		sc.display();
-		sc.deleteLast();
+		sc.search(40);
 		sc.display();
 		
 	}
