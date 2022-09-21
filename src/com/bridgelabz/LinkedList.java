@@ -28,20 +28,15 @@ public class LinkedList<K> {
 		}
 	}
 
-	// pushing new data
-	public void push(int data) {
+	public void addFirst(Object data) {
+		Node newNode = new Node(data);
 
-		Node newNode = new Node(data);		//new object created
-
-		if (head == null) {
+		if (head == null)
 			head = newNode;
-
-		} else {
-			Node temp = head;		// create temp variable and point the address and traversing 
-			while (temp.next != null) {
-				temp = temp.next;
-			}
-			temp.next = newNode;
+		else {
+			Node temp = head;
+			head = newNode;
+			head.next = temp;
 
 		}
 	}
@@ -64,10 +59,11 @@ public class LinkedList<K> {
 		System.out.println("Welcome to LinkedList programs");
 		LinkedList sc = new LinkedList();
 
-		sc.push(56);
-		sc.push(30);
-		sc.push(70);
+		sc.addFirst(70);
+		sc.addFirst(30);
+		sc.addFirst(56);
 		sc.display();
+		
 	}
 
 }
